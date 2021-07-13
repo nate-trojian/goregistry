@@ -1,3 +1,6 @@
+![pkg-go-dev](https://pkg.go.dev/badge/mod/github.com/nate-trojian/goregistry)
+![Go Report Card](https://goreportcard.com/badge/github.com/nate-trojian/goregistry)
+![go-version](https://img.shields.io/github/go-mod/go-version/nate-trojian/goregistry) 
 # goregistry
 goregistry is a Go implementation of the [Registry](https://martinfowler.com/eaaCatalog/registry.html) design pattern.
 
