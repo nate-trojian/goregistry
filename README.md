@@ -6,6 +6,8 @@
 goregistry is a Go implementation of the [Registry](https://martinfowler.com/eaaCatalog/registry.html) design pattern.
 
 ## Install
+Latest version: `v1.0.0`
+
 ```shell
 go get github.com/nate-trojian/goregistry
 ```
