@@ -24,7 +24,7 @@ func ExampleNew() {
 	r.Register("bar", &bar{})
 }
 
-func ExampleRegistry_FromJSON() {
+func Example() {
 	type base struct {
 		Type string
 	}
