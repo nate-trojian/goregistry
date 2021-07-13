@@ -12,6 +12,14 @@ var (
 	ErrKeyNotFound = errors.New("key not found in registry")
 )
 
+// New creates a new Registry type using a KeyFunction
+func New(keyFunc KeyFunction) (Registry, error) {
+	return &registry{
+		keyFunc: keyFunc,
+		mapping: make(map[string]reflect.Type),
+	}, nil
+}
+
 // KeyFunction provides the definition for the function to return a key from a JSON string as a byte array
 type KeyFunction func([]byte) (string, error)
 
@@ -53,12 +61,4 @@ func (r *registry) FromJSON(data []byte) (interface{}, error) {
 		return nil, fmt.Errorf("failed to parse data into type with key %s - %w", key, err)
 	}
 	return ret, nil
-}
-
-// New creates a new Registry type using a KeyFunction
-func New(keyFunc KeyFunction) (Registry, error) {
-	return &registry{
-		keyFunc: keyFunc,
-		mapping: make(map[string]reflect.Type),
-	}, nil
 }
