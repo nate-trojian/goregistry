@@ -7,7 +7,7 @@ import (
 )
 
 func BenchmarkReflect(b *testing.B) {
-	r, _ := goregistry.New(keyFunc)
+	r := goregistry.New(keyFunc)
 	r.Register("intern", &intern{})
 	r.Register("salary", &salary{})
 	b.Run("Intern", func(b *testing.B) {

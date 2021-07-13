@@ -20,17 +20,19 @@ func ExampleNew() {
 		}
 		return b.Type, nil
 	}
-	r, _ := goregistry.New(keyFunc)
+	r := goregistry.New(keyFunc)
 	r.Register("bar", &bar{})
 }
 
 func Example() {
+	// Structs
 	type base struct {
 		Type string
 	}
-	type bar struct {
+	type foo struct {
 		Name string
 	}
+	// Key function
 	keyFunc := func(data []byte) (string, error) {
 		b := &base{}
 		err := json.Unmarshal(data, b)
@@ -39,18 +41,22 @@ func Example() {
 		}
 		return b.Type, nil
 	}
-	r, _ := goregistry.New(keyFunc)
-	r.Register("bar", &bar{})
+	// Registry Initialization
+	r := goregistry.New(keyFunc)
+	r.Register("foo", &foo{})
 
+	// Message to decode
 	data := []byte(
 		`{
-			"type": "bar",
-			"name": "BAR"
+			"type": "foo",
+			"name": "bar"
 		}`)
 	b, err := r.FromJSON(data)
+	// Did it work?
 	if err != nil {
-		fmt.Printf("%v", err)
+		fmt.Printf("%+v", err)
 		return
 	}
-	fmt.Printf("%v", b)
+	// Of course it did
+	fmt.Printf("%+v", b)
 }
