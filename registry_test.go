@@ -50,15 +50,12 @@ type salary struct {
 
 func TestNewRegistry(t *testing.T) {
 	t.Run("Success", func(t *testing.T) {
-		_, err := goregistry.New(keyFunc)
-		if err != nil {
-			t.Fatalf("Unexpected error %v", err)
-		}
+		_ = goregistry.New(keyFunc)
 	})
 }
 
 func TestRegister(t *testing.T) {
-	r, _ := goregistry.New(keyFunc)
+	r := goregistry.New(keyFunc)
 	t.Run("Success", func(t *testing.T) {
 		r.Register("intern", &intern{})
 		r.Register("salary", &salary{})
@@ -67,7 +64,7 @@ func TestRegister(t *testing.T) {
 
 func TestFromJSON(t *testing.T) {
 	// Setup
-	r, _ := goregistry.New(keyFunc)
+	r := goregistry.New(keyFunc)
 	r.Register("intern", &intern{})
 	r.Register("salary", &salary{})
 	// Error Tests
@@ -81,6 +78,7 @@ func TestFromJSON(t *testing.T) {
 		{"Unknown Key", []byte(`{"type":"a"}`), goregistry.ErrKeyNotFound},
 		{"Fail to Unmarshal to Type", []byte(`{"type":"intern", "name": 1}`), errors.New("json: cannot unmarshal number into Go struct field intern.Name of type string")},
 	}
+	// Run them
 	for _, test := range tests {
 		t.Run(test.Name, func(t *testing.T) {
 			_, err := r.FromJSON(test.Input)
@@ -98,6 +96,7 @@ func TestFromJSON(t *testing.T) {
 			}
 		})
 	}
+
 	// Successful tests
 	t.Run("Successful", func(t *testing.T) {
 		t.Run("Intern", func(t *testing.T) {
