@@ -1,7 +1,7 @@
-![pkg-go-dev](https://pkg.go.dev/badge/mod/github.com/nate-trojian/goregistry)
-![gh-workflow](https://img.shields.io/github/workflow/status/nate-trojian/goregistry/main)
-![Go Report Card](https://goreportcard.com/badge/github.com/nate-trojian/goregistry)
-![go-version](https://img.shields.io/github/go-mod/go-version/nate-trojian/goregistry)
+[![pkg-go-dev](https://pkg.go.dev/badge/mod/github.com/nate-trojian/goregistry)](https://pkg.go.dev/github.com/nate-trojian/goregistry)
+[![main](https://github.com/nate-trojian/goregistry/actions/workflows/main.yml/badge.svg)](https://github.com/nate-trojian/goregistry/actions/workflows/main.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/nate-trojian/goregistry)](https://goreportcard.com/report/github.com/nate-trojian/goregistry)
+[![go-version](https://img.shields.io/github/go-mod/go-version/nate-trojian/goregistry)](https://golang.org/doc/go1.16)
 # goregistry
 goregistry is a Go implementation of the [Registry](https://martinfowler.com/eaaCatalog/registry.html) design pattern.
 
